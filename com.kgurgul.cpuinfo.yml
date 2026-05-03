@@ -1,6 +1,6 @@
 app-id: com.kgurgul.cpuinfo
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk17
@@ -19,30 +19,22 @@ modules:
   - name: cpuinfo
     buildsystem: simple
     build-commands:
-      - install -D cpuinfo /app/bin/cpuinfo
+      - install -D cpuinfo.sh /app/bin/cpuinfo
       - install -D cpuinfo.jar /app/share/cpuinfo.jar
-      - install -D com.kgurgul.cpuinfo.desktop /app/share/applications/com.kgurgul.cpuinfo.desktop
-      - install -D icon-linux.png /app/share/icons/hicolor/256x256/apps/com.kgurgul.cpuinfo.png
-      - install -D com.kgurgul.cpuinfo.metainfo.xml /app/share/appdata/com.kgurgul.cpuinfo.metainfo.xml
+      - install -Dm644 desktopApp/stores/flatpak/${FLATPAK_ID}.desktop -t /app/share/applications/
+      - install -Dm644 desktopApp/stores/flatpak/${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo/
+      - install -Dm644 desktopApp/desktop-icons/icon-linux.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
     sources:
       - type: file
-        path: cpuinfo
+        path: cpuinfo.sh
       - type: file
-        url: https://github.com/kamgurgul/cpu-info/releases/download/jvm-1.2.0/CPU-Info-linux-x64-1.2.0-release.jar
-        sha256: 8896c8440e3e73cb1cebe59344a2f7067189a5176fb673a4bbff3c3231b65482
+        url: https://github.com/kamgurgul/cpu-info/releases/download/jvm-1.10.0/CPU-Info-linux-x64-1.10.0-release.jar
+        sha256: e433c48f932e46181f0bdfa6e52e27fb2581aac1932d071fb002bd45ba96a55d
         only-arches: [x86_64]
         dest-filename: cpuinfo.jar
-      - type: file
-        url: https://github.com/kamgurgul/cpu-info/releases/download/jvm-1.2.0/CPU-Info-linux-arm64-1.2.0-release.jar
-        sha256: ee51af1cb30bafbd9a4d30fa361c64f286dca517b59a475bb607195757536769
-        only-arches: [aarch64]
-        dest-filename: cpuinfo.jar
-      - type: file
-        url: https://raw.githubusercontent.com/kamgurgul/cpu-info/a5a326d0da79de38be379f7deec7b571b70d2892/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.desktop
-        sha256: dfb39d66a8e2eec5ca4c257f161dcddaa17ec4da04abb7302cfbce4a30077c74
-      - type: file
-        url: https://raw.githubusercontent.com/kamgurgul/cpu-info/a5a326d0da79de38be379f7deec7b571b70d2892/desktopApp/desktop-icons/icon-linux.png
-        sha256: 1ee7f162a1bbc19494b2625d9717e4c9dc2ff6c3cd897eeb91cf95109b7bcb30
-      - type: file
-        url: https://raw.githubusercontent.com/kamgurgul/cpu-info/a5a326d0da79de38be379f7deec7b571b70d2892/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml
-        sha256: 25c90e0c8551ae9dec402c6dcc0e592ee4cd88e4520c6e8d2eea9a99d2182620
+      - type: git
+        url: https://github.com/kamgurgul/cpu-info.git
+        tag: jvm-1.10.0
+        commit: 09d0e511600ca3fa26f378f61ed377eaaa45cc68
+      - type: patch
+        path: fix-appdata.patch

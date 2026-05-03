@@ -1,0 +1,52 @@
+From d5e190966544b7326276abf980ced4c735cbe064 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Sun, 3 May 2026 14:52:46 +0300
+Subject: [PATCH] Fix appdata paper cuts
+
+Signed-off-by: Sabri Ünal <yakushabb@gmail.com>
+---
+ desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml b/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml
+index 6dc9bcc..0e3282b 100644
+--- a/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml
++++ b/desktopApp/stores/flatpak/com.kgurgul.cpuinfo.metainfo.xml
+@@ -25,6 +25,7 @@
+     </developer>
+     <url type="homepage">https://github.com/kamgurgul/cpu-info</url>
+     <url type="bugtracker">https://github.com/kamgurgul/cpu-info/issues</url>
++    <url type="vcs-browser">https://github.com/kamgurgul/cpu-info</url>
+     <launchable type="desktop-id">com.kgurgul.cpuinfo.desktop</launchable>
+     <content_rating type="oars-1.1" />
+     <screenshots>
+@@ -48,13 +49,24 @@
+         </screenshot>
+     </screenshots>
+     <releases>
++        <release date="2026-03-23" version="1.10.0" />
++        <release date="2026-02-27" version="1.9.0" />
++        <release date="2026-01-19" version="1.8.1" />
++        <release date="2026-01-14" version="1.8.0" />
++        <release date="2025-08-12" version="1.7.0" />
++        <release date="2025-06-10" version="1.6.0" />
++        <release date="2025-03-01" version="1.5.0" />
++        <release date="2025-01-16" version="1.4.3" />
++        <release date="2025-01-16" version="1.4.2" />
++        <release date="2025-01-15" version="1.4.1" />
++        <release date="2024-09-03" version="1.3.0" />
+         <release date="2024-08-22" version="1.2.0" />
+     </releases>
+     <keywords>
+         <keyword>cpu info</keyword>
+         <keyword>hardware info</keyword>
+         <keyword>system info</keyword>
+         <keyword>device specs</keyword>
+         <keyword>cpu details</keyword>
+     </keywords>
+-</component>
+\ No newline at end of file
++</component>
+--
+libgit2 1.7.2
+
